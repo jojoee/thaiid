@@ -1,4 +1,4 @@
-# thaiid
+# thaiID
 
 [![Codecov](https://img.shields.io/codecov/c/github/jojoee/thaiid.svg)](https://codecov.io/github/jojoee/thaiid)
 [![Version - npm](https://img.shields.io/npm/v/thaiid.svg)](https://www.npmjs.com/package/thaiid)
