@@ -35,6 +35,23 @@ const thaiId = {
 
   getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
+  },
+
+  /**
+   * Get random Thai nationality ID
+   *
+   * @returns {string} generated Thai nationality ID
+   */
+  random () {
+    let checksum = 0
+    let s = ''
+    for (let i = 0; i < 12; i++) {
+      const r = this.getRandomInt(0, 9)
+      checksum += (13 - i) * r
+      s += String(r)
+    }
+
+    return s + this.getLastDigit(checksum)
   }
 }
 

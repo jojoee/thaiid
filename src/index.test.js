@@ -74,3 +74,12 @@ describe('verify', () => {
     expect(thaiId.verify('3648905117041')).toBeFalsy()
   })
 })
+
+describe('random', () => {
+  test('valid checksum', () => {
+    for (let i = 0; i < 20; i++) {
+      const id = thaiId.random()
+      expect(thaiId.verify(id)).toBeTruthy()
+    }
+  })
+})
