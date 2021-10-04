@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>thaiid.js</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+  <style>
+    table {
+      table-layout: fixed
+    }
+
+    td {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .is-valid-true,
+    tr[data-is-valid="true"] td:nth-child(2) {
+      color: #198754 !important;
+      font-weight: bold;
+    }
+
+    .is-valid-false,
+    tr[data-is-valid="false"] td:nth-child(2) {
+      color: #dc3545 !important;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h2>thaiid.js</h2>
+      <hr>
+
+      <input type="text" id="nationality-id" class="u-full-width" placeholder="Thai Nationality ID">
+      <div id="result" class="u-full-width"></div><br>
+      <button id="random">
+        Random
+      </button>
+      <hr>
+
+      <h4>Example</h4>
+      <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Thai Nationality ID</th>
+            <th>Is Valid</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Thai Nationality ID</th>
+            <th>Is Valid</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/random-js/1.0.8/random.min.js"></script>
+  <script src="./src/index.js"></script>
+  <script>
+    // random
+    const r = new Random(Random.engines.mt19937().autoSeed())
+
+    const $nationalityId = $('#nationality-id')
+    const $result = $('#result')
+    const $random = $('#random')
+    const $example = $('#example')
+
+    function updateResult() {
+      const nationalityId = $nationalityId.val()
+      const isValid = thaiId.verify(nationalityId)
+      const cssClassName = isValid ? 'is-valid-true' : 'is-valid-false'
+      $result.attr('class', cssClassName);
+      $result.html(isValid.toString())
+    }
+
+    function init() {
+      updateResult()
+    }
+
+    function randomNationalityId() {
+      const items = []
+      for (let i = 0; i < 13; i++) {
+        const integerNumber = thaiId.getRandomInt(0, 9)
+        items.push(integerNumber)
+      }
+
+      return items.join('')
+    }
+
+    $(document).ready(function () {
+      init()
+
+      // number
+      $nationalityId.on('input', function (e) {
+        updateResult()
+      })
+
+      // random
+      $random.click(function (e) {
+        const id = randomNationalityId()
+        $nationalityId.val(id)
+        updateResult()
+      })
+
+      // example
+      const ids = [].concat(
+        (new Array(4)).fill(1).map(val => thaiId.random()),
+        (new Array(10)).fill(1).map(val => randomNationalityId()),
+      )
+      $example.DataTable({
+        paging: false,
+        searching: false,
+        ordering: false,
+        data: ids.map((id) => [id, thaiId.verify(id)]),
+        createdRow: function (row, data, dataIndex) {
+          $(row).attr('data-is-valid', data[1].toString())
+        },
+      })
+    })
+  </script>
+</body>
+
+</html>
