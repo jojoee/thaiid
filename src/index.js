@@ -21,18 +21,34 @@ const thaiId = {
     return true
   },
 
+  /**
+   * private
+   * @param {number} checksum
+   * @returns {number}
+   */
   getLastDigit (checksum) {
     return (11 - (checksum % 11)) % 10
   },
 
+  /**
+   * private
+   * @param {string} [s='']
+   * @returns {boolean}
+   */
   isValidChecksum (s = '') {
-    // checksum
     let checksum = 0
     for (let i = 0; i < 12; i++) checksum += (13 - i) * Number(s[i])
     if (Number(s[12]) !== this.getLastDigit(checksum)) return false
+
     return true
   },
 
+  /**
+   * private
+   * @param {number} min integer number of min
+   * @param {number} max integer number of max
+   * @returns {number} integer number
+   */
   getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
   },
