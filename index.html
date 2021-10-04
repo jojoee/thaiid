@@ -111,8 +111,17 @@
 
       // example
       const ids = [].concat(
-        (new Array(4)).fill(1).map(val => thaiId.random()),
-        (new Array(10)).fill(1).map(val => randomNationalityId()),
+        (new Array(3)).fill(1).map(val => thaiId.random()),
+        (new Array(3)).fill(1).map(val => randomNationalityId()),
+        [
+          null,
+          true,
+          false,
+          [1, 2, 3],
+          {},
+          'this-is-not-number',
+          '0123456'
+        ]
       )
       $example.DataTable({
         paging: false,
