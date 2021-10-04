@@ -6,7 +6,7 @@
   "typings": "src/index.js",
   "scripts": {
     "jest": "jest",
-    "jest.watch": "npm run test -- --watch",
+    "jest.watch": "npm run jest -- --watch",
     "coverage.check": "jest --coverage",
     "standard": "standard",
     "validate": "npm run standard && npm run coverage.check"
@@ -18,10 +18,12 @@
   "keywords": [
     "thai",
     "id",
+    "thai id",
+    "nationality",
+    "nationality id",
     "validation",
     "validator",
-    "nationality",
-    "thai id",
+    "personal id",
     "PID",
     "random",
     "card",
