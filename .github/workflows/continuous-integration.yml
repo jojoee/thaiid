@@ -1,5 +1,8 @@
 name: continuous integration
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:

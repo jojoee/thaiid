@@ -1,5 +1,8 @@
 name: runnable
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 defaults:
   run:
