@@ -1,9 +1,9 @@
 const thaiId = {
 
   /**
-   * Verify
+   * Verify Thai Nationality ID string
    *
-   * @param {string|number} s string number
+   * @param {string|number} [s=''] string number e.g. "1234567891020", 3648905117022
    * @returns {boolean}
    */
   verify (s = '') {
@@ -22,20 +22,24 @@ const thaiId = {
   },
 
   /**
-   * private
+   * Get last digit (13th number) of Thai Nationality ID
+   *
+   * @private
    * @param {number} checksum
-   * @returns {number}
+   * @returns {number} single digit in range [0-9] e.g. 1, 4
    */
   getLastDigit (checksum) {
     return (11 - (checksum % 11)) % 10
   },
 
   /**
-   * private
-   * @param {string} [s='']
+   * Validate checksum value of Thai Nationality ID
+   *
+   * @private
+   * @param {string} s
    * @returns {boolean}
    */
-  isValidChecksum (s = '') {
+  isValidChecksum (s) {
     let checksum = 0
     for (let i = 0; i < 12; i++) checksum += (13 - i) * Number(s[i])
     if (Number(s[12]) !== this.getLastDigit(checksum)) return false
@@ -44,19 +48,21 @@ const thaiId = {
   },
 
   /**
-   * private
-   * @param {number} min integer number of min
-   * @param {number} max integer number of max
-   * @returns {number} integer number
+   * Get random integer number [min, max] (utility function)
+   *
+   * @private
+   * @param {number} min min (integer number)
+   * @param {number} max max (integer number)
+   * @returns {number} random integer number
    */
   getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
   },
 
   /**
-   * Get random Thai nationality ID
+   * Get random Thai Nationality ID
    *
-   * @returns {string} generated Thai nationality ID
+   * @returns {string} random generated Thai Nationality ID
    */
   random () {
     let checksum = 0

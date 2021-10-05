@@ -16,14 +16,14 @@ describe('verify', () => {
     expect(thaiId.verify('it-must-be-number-only')).toBeFalsy()
   })
 
-  test('input length of it not equals 13', () => {
+  test('input length does not equal 13', () => {
     expect(thaiId.verify('0')).toBeFalsy()
     expect(thaiId.verify('1')).toBeFalsy()
     expect(thaiId.verify('0123456')).toBeFalsy()
     expect(thaiId.verify('01234567890123456789')).toBeFalsy()
   })
 
-  test('input can be number', () => {
+  test('input can be a number', () => {
     expect(thaiId.verify(3648905117162)).toBeTruthy()
   })
 
@@ -76,7 +76,7 @@ describe('verify', () => {
 })
 
 describe('random', () => {
-  test('valid checksum', () => {
+  test('normal', () => {
     for (let i = 0; i < 20; i++) {
       const id = thaiId.random()
       expect(thaiId.verify(id)).toBeTruthy()
