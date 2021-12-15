@@ -1,7 +1,7 @@
 {
   "name": "thaiid",
   "version": "0.0.0-development",
-  "description": "TODO",
+  "description": "Fastest Thai Nationality ID verify and random",
   "main": "src/index.js",
   "typings": "src/index.js",
   "scripts": {
