@@ -44,6 +44,9 @@
       <button id="random">
         Random
       </button>
+      <button id="valid-random">
+        Random Valid Thai ID
+      </button>
       <hr>
 
       <h4>Example</h4>
@@ -70,6 +73,7 @@
     const $nationalityId = $('#nationality-id')
     const $result = $('#result')
     const $random = $('#random')
+    const $validRandom = $('#valid-random')
     const $example = $('#example')
 
     function updateResult() {
@@ -105,6 +109,13 @@
       // random
       $random.click(function (e) {
         const id = randomNationalityId()
+        $nationalityId.val(id)
+        updateResult()
+      })
+
+      // random valid Thai ID
+      $validRandom.click(function (e) {
+        const id = thaiId.random()
         $nationalityId.val(id)
         updateResult()
       })
