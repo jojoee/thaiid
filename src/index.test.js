@@ -156,6 +156,18 @@ describe('isValidChecksum', () => {
   })
 })
 
+describe('getRandomInt', () => {
+  test('normal', () => {
+    for (let i = 0; i < 1000; i++) {
+      const min = 3
+      const max = 2000
+      const number = thaiId.getRandomInt(min, max)
+      expect(number).toBeGreaterThanOrEqual(min)
+      expect(number).toBeLessThanOrEqual(max)
+    }
+  })
+})
+
 describe('random', () => {
   test('normal', () => {
     for (let i = 0; i < 20; i++) {
