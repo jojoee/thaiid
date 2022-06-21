@@ -75,6 +75,38 @@ describe('verify', () => {
   })
 })
 
+describe('getLastDigit', () => {
+  test('normal', () => {
+    expect(thaiId.getLastDigit(0)).toBe(1)
+    expect(thaiId.getLastDigit(2)).toBe(9)
+    expect(thaiId.getLastDigit(3)).toBe(8)
+    expect(thaiId.getLastDigit(5)).toBe(6)
+    expect(thaiId.getLastDigit(7)).toBe(4)
+    expect(thaiId.getLastDigit(11)).toBe(1)
+    expect(thaiId.getLastDigit(13)).toBe(9)
+    expect(thaiId.getLastDigit(17)).toBe(5)
+    expect(thaiId.getLastDigit(19)).toBe(3)
+    expect(thaiId.getLastDigit(23)).toBe(0)
+    expect(thaiId.getLastDigit(29)).toBe(4)
+    expect(thaiId.getLastDigit(31)).toBe(2)
+    expect(thaiId.getLastDigit(37)).toBe(7)
+    expect(thaiId.getLastDigit(41)).toBe(3)
+    expect(thaiId.getLastDigit(43)).toBe(1)
+    expect(thaiId.getLastDigit(47)).toBe(8)
+    expect(thaiId.getLastDigit(53)).toBe(2)
+    expect(thaiId.getLastDigit(59)).toBe(7)
+    expect(thaiId.getLastDigit(61)).toBe(5)
+    expect(thaiId.getLastDigit(67)).toBe(0)
+    expect(thaiId.getLastDigit(71)).toBe(6)
+    expect(thaiId.getLastDigit(73)).toBe(4)
+    expect(thaiId.getLastDigit(79)).toBe(9)
+    expect(thaiId.getLastDigit(83)).toBe(5)
+    expect(thaiId.getLastDigit(89)).toBe(0)
+    expect(thaiId.getLastDigit(97)).toBe(2)
+    expect(thaiId.getLastDigit(100)).toBe(0)
+  })
+})
+
 describe('random', () => {
   test('normal', () => {
     for (let i = 0; i < 20; i++) {
