@@ -170,7 +170,7 @@ describe('getRandomInt', () => {
 
 describe('random', () => {
   test('normal', () => {
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 1000; i++) {
       const id = thaiId.random()
       expect(thaiId.verify(id)).toBeTruthy()
     }
